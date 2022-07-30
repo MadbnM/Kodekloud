@@ -1,0 +1,45 @@
+The xFusionCorp Industries security team recently did a security audit of their infrastructure and came up with ideas to improve the application and server security. 
+They decided to use SElinux for an additional security layer. 
+They are still planning how they will implement it; however, they have decided to start testing with app servers, so based on the recommendations they have the following requirements:
+
+Install the required packages of SElinux on App server 2 in Stratos Datacenter and disable it permanently for now; 
+it will be enabled after making some required configuration changes on this host. 
+
+Don't worry about rebooting the server as there is already a reboot scheduled for tonight's maintenance window. 
+Also ignore the status of SElinux command line right now; the final status after reboot should be disabled.
+
+From Jumphost, SSH to stapp02
+
+Server Name	 IP	             Hostname	                      User	          Password	Purpose
+stapp02	     172.16.238.11	stapp02.stratos.xfusioncorp.com	steve	Am3ric@	  Nautilus  App 2
+
+ 1  yum install httpd
+ 2  service httpd start
+ 3  service httpd status
+ 4  yum install vsftpd
+ 5  service vsftpd start
+ 6  systemctl status vsftpd.service
+ 7  rpm -qa | grep selinux
+ 8  yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setroubleshoot-server setools setools-console mcstrans
+ 9  rpm -qa | grep selinux
+10  getenforce
+11  sestatus
+12  cat /etc/selinux/config
+13  vi /etc/selinux/config
+
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=disabled                                                --CHANGED ENFORCING TO DISABLE
+# SELINUXTYPE= can take one of these two values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected. 
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted
+
+14  cat /etc/selinux/config 
+  
+  
+  
