@@ -10,8 +10,8 @@ Also ignore the status of SElinux command line right now; the final status after
 
 From Jumphost, SSH to stapp02
 
-Server Name	 IP	             Hostname	                      User	          Password	Purpose
-stapp02	     172.16.238.11	stapp02.stratos.xfusioncorp.com	steve	Am3ric@	  Nautilus  App 2
+Server Name	 IP	             Hostname	                      User	          Password	    Purpose
+stapp02	     172.16.238.11	  stapp02.stratos.xfusioncorp.com	 steve	         Am3ric@	     Nautilus  App 2
 
  1  yum install httpd
  2  service httpd start
