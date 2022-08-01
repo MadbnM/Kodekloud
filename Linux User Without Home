@@ -1,0 +1,11 @@
+The system admins team of xFusionCorp Industries has set up a new tool on all app servers, as they have a requirement to create a service user account that will be used by that tool. 
+They are finished with all apps except for App Server 3 in Stratos Datacenter.
+
+Create a user named kareem in App Server 3 without a home directory.
+
+1  useradd --help
+-M, --no-create-home          do not create the user's home directory
+2  useradd -M kareem               
+3  cat /etc/passwd
+kareem:x:1002:1002::/home/kareem:/bin/bash
+4  ls /home/                 ----- user kareem should not be exist
